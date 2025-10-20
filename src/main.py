@@ -31,3 +31,5 @@ def read_root():
 # Including routers
 app.include_router(api_router)
 app.include_router(websocket_router)
+
+print("TODO OK")
