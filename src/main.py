@@ -25,7 +25,7 @@ print("🟢 Tablas creadas con éxito")
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"status": "ok", "message": "API funcionando correctamente 🚀"}
 
 
 # Including routers
