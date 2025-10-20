@@ -19,7 +19,9 @@ app.add_middleware(
     allow_headers=["*"],)
 
 # Connecting to DB and creating tables
+print("🟡 Creando tablas...")
 Base.metadata.create_all(engine)
+print("🟢 Tablas creadas con éxito")
 
 @app.get("/")
 def read_root():
