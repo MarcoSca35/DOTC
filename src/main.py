@@ -3,6 +3,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from models.db import Base, engine
+from api import api_router
+from ws_service import websocket_router
 
 app = FastAPI()
 
@@ -15,9 +18,16 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],)
 
+# Connecting to DB and creating tables
+Base.metadata.create_all(engine)
 
 @app.get("/")
 def read_root():
-    return {"status": "ok", "message": "API funcionando correctamente 🚀"}
+    return {"Hello": "World"}
+
+
+# Including routers
+app.include_router(api_router)
+app.include_router(websocket_router)
 
 
