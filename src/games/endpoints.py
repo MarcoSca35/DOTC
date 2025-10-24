@@ -150,9 +150,9 @@ async def create_game(
         response.set_cookie(
         key="playersGames",
         value=json.dumps(players_game.model_dump()),
-        secure=False,
+        secure=True,
         httponly=False,
-        samesite="lax",
+        samesite="none",
         path="/"
         )
 
@@ -188,9 +188,9 @@ async def join_game(
         response.set_cookie(
         key="playersGames",
         value=json.dumps(players_game.model_dump()),
-        secure=False,
+        secure=True,
         httponly=False,
-        samesite="lax",
+        samesite="none",
         path="/"
         )
 
@@ -336,4 +336,5 @@ async def delete_game(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail=str(e),
         )
+
     return
